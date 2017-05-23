@@ -36,7 +36,7 @@ class Login(Resource):
         username = args["username"]
         password = args["password"]
         found_user = User.objects(username=username).first()
-        if found_user is not None:
+        if found_user is not None and found_user.password == password:
             return {
                 "code": 1,
                 "message": "Logged in"
